@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const $friends = document.querySelector('.friends');
     if (param1Value && param2Value) {
         $friends.textContent = "Дорогие " + param1Value + " и " + param2Value;
-    } else if (param1Value && (param1Value === "Алена" || param1Value === "Маша")) {
+    } else if (param1Value && (param1Value === "Алена" || param1Value === "Маша" || param1Value === "Наталья")) {
         $friends.textContent = "Дорогая " + param1Value;
     } else if (param1Value && !param2Value) {
         $friends.textContent = "Дорогой " + param1Value;
@@ -51,77 +51,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log('param1:', param1Value);
     console.log('param2:', param2Value);
+
+    Fancybox.bind("[data-fancybox]", {
+        Toolbar: {
+            display: {
+                left: [''],
+                middle: [],
+                right: ['close'],
+              },
+        }
+      });
 });
-
-let currentIndex = 0;
-
-function openFullscreen(element, index) {
-    currentIndex = index;
-    const fullscreenElement = document.createElement("div");
-    fullscreenElement.className = "fullscreen";
-
-    const img = document.createElement("img");
-    img.src = element.src;
-    img.alt = element.alt;
-    fullscreenElement.appendChild(img);
-
-    const closeBtn = document.createElement("div");
-    closeBtn.className = "close-btn";
-    closeBtn.innerHTML = "&#10006;";
-    closeBtn.onclick = closeFullscreen;
-    fullscreenElement.appendChild(closeBtn);
-
-    const prevBtn = document.createElement("div");
-    prevBtn.className = "prev-btn";
-    prevBtn.innerHTML = "&#9665;"; // Unicode-символ для стрелки влево
-    prevBtn.onclick = function () {
-        currentIndex -= 1;
-        showSlide(currentIndex);
-    };
-    fullscreenElement.appendChild(prevBtn);
-
-    const nextBtn = document.createElement("div");
-    nextBtn.className = "next-btn";
-    nextBtn.innerHTML = "&#9655;"; // Unicode-символ для стрелки вправо
-    nextBtn.onclick = function () {
-        currentIndex += 1;
-        showSlide(currentIndex);
-    };
-    fullscreenElement.appendChild(nextBtn);
-
-    document.body.appendChild(fullscreenElement);
-}
-
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowLeft') {
-        currentIndex -= 1;
-        showSlide(currentIndex);
-    } else if (event.key === 'ArrowRight') {
-        currentIndex += 1;
-        showSlide(currentIndex);
-    } else if (event.key === 'Escape') {
-        closeFullscreen();
-    }
-});
-
-function closeFullscreen() {
-    const fullscreenElement = document.querySelector(".fullscreen");
-    if (fullscreenElement) {
-        fullscreenElement.remove();
-    }
-}
-
-function showSlide(index) {
-    console.log(index);
-    const images = document.querySelectorAll('.gallery_item');
-    console.log("images length", images.length)
-    if (index < 0) {
-        currentIndex = images.length - 1;
-    } else if (index >= images.length) {
-        currentIndex = 0;
-    }
-
-    const fullscreenImage = document.querySelector('.fullscreen img');
-    fullscreenImage.src = images[currentIndex].src;
-}
-
