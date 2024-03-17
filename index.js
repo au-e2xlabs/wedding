@@ -34,16 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const urlSearchParams = new URLSearchParams(window.location.search);
 
-    const param1Value = urlSearchParams.get('first_friend');
-    const param2Value = urlSearchParams.get('last_friend');
+    const param1Value = urlSearchParams.get('first-guest');
+    const param2Value = urlSearchParams.get('second-guest');
 
-    const $friends = document.querySelector('.friends');
+    const $guests = document.querySelector('.guests');
     if (param1Value && param2Value) {
-        $friends.textContent = "Дорогие " + param1Value + " и " + param2Value;
+        $guests.textContent = "Дорогие " + param1Value + " и " + param2Value + "!";
     } else if (param1Value && (param1Value === "Алена" || param1Value === "Маша" || param1Value === "Наталья")) {
-        $friends.textContent = "Дорогая " + param1Value;
+        $guests.textContent = "Дорогая " + param1Value + "!";
     } else if (param1Value && !param2Value) {
-        $friends.textContent = "Дорогой " + param1Value;
+        $guests.textContent = "Дорогой " + param1Value + "!";
     }
 
     let vh = window.innerHeight * 0.01;
