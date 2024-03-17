@@ -38,12 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const param2Value = urlSearchParams.get('second-guest');
 
     const $guests = document.querySelector('.guests');
-    if (param1Value && param2Value) {
-        $guests.textContent = "Дорогие " + param1Value + " и " + param2Value + "!";
-    } else if (param1Value && (param1Value === "Алена" || param1Value === "Маша" || param1Value === "Наталья")) {
-        $guests.textContent = "Дорогая " + param1Value + "!";
-    } else if (param1Value && !param2Value) {
+    if (param1Value === "Родители") {
+        $guests.textContent = "Дорогие Родители!";
+    } else if (param1Value === "Дима") {
         $guests.textContent = "Дорогой " + param1Value + "!";
+    } else if (param1Value && param2Value) {
+        $guests.textContent = "Дорогие " + param1Value + " и " + param2Value + "!";
+    } else if (param1Value === "Крестная мама") {
+        $guests.textContent = "Дорогая " + param1Value + "!";
     }
 
     let vh = window.innerHeight * 0.01;
@@ -58,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 left: [''],
                 middle: [],
                 right: ['close'],
-              },
+            },
         }
-      });
+    });
 });
