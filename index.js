@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const $guests = document.querySelector('.guests');
     if (param1Value === "Родители") {
         $guests.textContent = "Дорогие Родители!";
-    } else if (param1Value === "Дима") {
+    } else if (param1Value === "Дима" || param1Value === "Степа") {
         $guests.textContent = "Дорогой " + param1Value + "!";
     } else if (param1Value && param2Value) {
         $guests.textContent = "Дорогие " + param1Value + " и " + param2Value + "!";
