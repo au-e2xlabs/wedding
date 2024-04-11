@@ -255,6 +255,7 @@ ul li:not(:last-child) {
     max-width: 300px;
     height: auto;
     transition: .5s;
+    border-radius: 8px;
 }
 
 .gallery_item:hover {
