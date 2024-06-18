@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const deadline = new Date(2024, 7, 6);
+    const deadline = new Date(2024, 6, 6);
     let timerId = null;
 
     function declensionNum(num, words) {
